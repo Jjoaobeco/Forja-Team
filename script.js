@@ -31,6 +31,51 @@ document.addEventListener('DOMContentLoaded', () => {
             src: 'img/galeria/saudacao-tatame-01.jpeg',
             category: 'equipe',
             caption: 'Respeito e união da equipe ao final do treino'
+        },
+        {
+            src: 'img/galeria/galeria-01.jpeg',
+            category: 'muay-thai',
+            caption: 'Treino dinâmico com luvas e caneleiras no tatame'
+        },
+        {
+            src: 'img/galeria/galeria-02.jpeg',
+            category: 'muay-thai',
+            caption: 'Acompanhamento de perto na movimentação e guarda'
+        },
+        {
+            src: 'img/galeria/galeria-03.jpeg',
+            category: 'muay-thai',
+            caption: 'Instrução técnica e troca de experiência no tatame'
+        },
+        {
+            src: 'img/galeria/galeria-04.jpeg',
+            category: 'jiu-jitsu',
+            caption: 'Aquecimento e preparação da turma de Jiu-Jitsu'
+        },
+        {
+            src: 'img/galeria/galeria-05.jpeg',
+            category: 'equipe',
+            caption: 'Turma alinhada em frente ao painel da Forja Team'
+        },
+        {
+            src: 'img/galeria/galeria-06.jpeg',
+            category: 'equipe',
+            caption: 'União e disciplina da equipe durante o treino'
+        },
+        {
+            src: 'img/galeria/galeria-07.jpeg',
+            category: 'jiu-jitsu',
+            caption: 'Treino técnico de guarda e movimentação no Jiu-Jitsu'
+        },
+        {
+            src: 'img/galeria/galeria-08.jpeg',
+            category: 'jiu-jitsu',
+            caption: 'Prática e supervisão técnica no tatame'
+        },
+        {
+            src: 'img/galeria/galeria-09.jpeg',
+            category: 'equipe',
+            caption: 'Respeito, tradição e disciplina no tatame'
         }
     ];
 
