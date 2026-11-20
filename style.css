@@ -254,7 +254,7 @@ img {
 }
 
 .hero-emblem img {
-    max-width: 380px;
+    max-width: 600px;
     filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.8));
     transition: transform 0.4s ease;
 }
@@ -915,5 +915,88 @@ img {
 
     .lightbox-next {
         right: 12px;
+    }
+}
+/* ================= PROFESSORES ================= */
+.teachers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+    align-items: start;
+}
+
+.teacher-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.teacher-card:hover {
+    border-color: rgba(220, 38, 38, 0.45);
+    transform: translateY(-4px);
+}
+
+.teacher-photo {
+    width: 100%;
+    background-color: #0E0E0E;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+}
+
+.teacher-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.teacher-card:hover .teacher-photo img {
+    transform: scale(1.03);
+}
+
+.teacher-body {
+    padding: 28px;
+}
+
+.teacher-role {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.teacher-body h3 {
+    font-family: var(--font-heading);
+    font-size: 1.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.teacher-body p {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    margin-bottom: 14px;
+}
+
+.teacher-body p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .teachers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-photo {
+        height: 340px;
+    }
+
+    .teacher-body {
+        padding: 22px;
     }
 }
