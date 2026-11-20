@@ -29,6 +29,7 @@
                 <a href="#inicio">Início</a>
                 <a href="#modalidades">Modalidades</a>
                 <a href="#mestre">Professor Rômulo</a>
+                <a href="#galeria">Galeria</a>
                 <a href="#horarios">Horários</a>
                 <a href="#contato" class="btn-nav">Aula Experimental</a>
             </nav>
@@ -143,6 +144,28 @@
                         <span>Foco no Aluno</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- GALERIA DE TREINOS -->
+    <section class="section section-dark" id="galeria">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">DIA A DIA NO TATAME</span>
+                <h2>GALERIA DE <span>TREINOS</span></h2>
+                <p>Confira a energia das nossas aulas, a evolução da equipe e o ambiente da Forja Team.</p>
+            </div>
+
+            <div class="filter-group gallery-filters" id="gallery-filters">
+                <button class="gallery-btn active" data-category="all">Todas</button>
+                <button class="gallery-btn" data-category="muay-thai">Muay Thai / Boxe</button>
+                <button class="gallery-btn" data-category="jiu-jitsu">Jiu-Jitsu</button>
+                <button class="gallery-btn" data-category="equipe">Equipe & Tatame</button>
+            </div>
+
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Preenchido automaticamente via script.js -->
             </div>
         </div>
     </section>
@@ -331,6 +354,7 @@
                 <a href="#inicio">Início</a>
                 <a href="#modalidades">Modalidades</a>
                 <a href="#mestre"> Rômulo</a>
+                <a href="#galeria">Galeria</a>
                 <a href="#horarios">Grade de Aulas</a>
             </div>
         </div>
@@ -343,6 +367,23 @@
     <a href="https://wa.me/553195466144?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20treinos%20da%20Forja%20Team." target="_blank" class="whatsapp-float" aria-label="Falar no WhatsApp">
         <i data-lucide="message-circle"></i>
     </a>
+
+    <!-- LIGHTBOX (AMPLIAÇÃO DE FOTO) -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Fechar imagem">
+            <i data-lucide="x"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Foto anterior">
+            <i data-lucide="chevron-left"></i>
+        </button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img">
+            <p class="lightbox-caption" id="lightbox-caption"></p>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Próxima foto">
+            <i data-lucide="chevron-right"></i>
+        </button>
+    </div>
 
     <script src="script.js"></script>
 </body>

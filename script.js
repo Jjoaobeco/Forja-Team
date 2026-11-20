@@ -1,4 +1,130 @@
 document.addEventListener('DOMContentLoaded', () => {
+   
+   // ================= GALERIA DE TREINOS & LIGHTBOX =================
+    const galleryItems = [
+        {
+            src: 'img/galeria/treino-geral-01.jpeg',
+            category: 'equipe',
+            caption: 'Turma reunida no tatame — Forja Team'
+        },
+        {
+            src: 'img/galeria/jiu-jitsu-01.jpeg',
+            category: 'jiu-jitsu',
+            caption: 'Aula de Jiu-Jitsu — Instrução e disciplina no tatame'
+        },
+        {
+            src: 'img/galeria/muay-thai-01.jpeg',
+            category: 'muay-thai',
+            caption: 'Treino técnico de Muay Thai / Boxe'
+        },
+        {
+            src: 'img/galeria/muay-thai-02.jpeg',
+            category: 'muay-thai',
+            caption: 'Movimentação e golpes em dupla'
+        },
+        {
+            src: 'img/galeria/treino-acompanhamento-01.jpeg',
+            category: 'muay-thai',
+            caption: 'Acompanhamento de perto durante o treino'
+        },
+        {
+            src: 'img/galeria/saudacao-tatame-01.jpeg',
+            category: 'equipe',
+            caption: 'Respeito e união da equipe ao final do treino'
+        }
+    ];
+
+    const galleryGrid = document.getElementById('gallery-grid');
+    const galleryButtons = document.querySelectorAll('#gallery-filters .gallery-btn');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+
+    let currentCategory = 'all';
+    let visibleGalleryItems = [...galleryItems];
+    let currentLightboxIndex = 0;
+
+    function renderGallery() {
+        if (!galleryGrid) return;
+
+        visibleGalleryItems = currentCategory === 'all'
+            ? [...galleryItems]
+            : galleryItems.filter(item => item.category === currentCategory);
+
+        galleryGrid.innerHTML = visibleGalleryItems.map((item, index) => `
+            <figure class="gallery-item" data-index="${index}">
+                <img src="${item.src}" alt="${item.caption}" loading="lazy">
+                <figcaption class="gallery-caption">${item.caption}</figcaption>
+            </figure>
+        `).join('');
+
+        galleryGrid.querySelectorAll('.gallery-item').forEach(el => {
+            el.addEventListener('click', () => {
+                openLightbox(Number(el.getAttribute('data-index')));
+            });
+        });
+    }
+
+    function openLightbox(index) {
+        if (!visibleGalleryItems.length) return;
+        currentLightboxIndex = index;
+        updateLightbox();
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+        const item = visibleGalleryItems[currentLightboxIndex];
+        if (!item) return;
+        lightboxImg.src = item.src;
+        lightboxImg.alt = item.caption;
+        lightboxCaption.textContent = item.caption;
+    }
+
+    function showNextPhoto(step) {
+        if (!visibleGalleryItems.length) return;
+        currentLightboxIndex = (currentLightboxIndex + step + visibleGalleryItems.length) % visibleGalleryItems.length;
+        updateLightbox();
+    }
+
+    galleryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            galleryButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCategory = btn.getAttribute('data-category');
+            renderGallery();
+        });
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', () => showNextPhoto(-1));
+    if (lightboxNext) lightboxNext.addEventListener('click', () => showNextPhoto(1));
+
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox || !lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showNextPhoto(-1);
+        if (e.key === 'ArrowRight') showNextPhoto(1);
+    });
+
+    renderGallery();
+   
     // Inicializa os ícones Lucide
     lucide.createIcons();
 
